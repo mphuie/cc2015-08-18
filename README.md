@@ -35,6 +35,24 @@ Written in Flask (python microframework and Flask-Restful)
 
 ##Sample output
 
-	curl http://localhost:5000/inventory -X POST -d "expirationDate=2016-01-01&label=TestItem"
+	> curl http://localhost:5000/inventory -X POST -d "expirationDate=2016-01-01&label=TestItem"
 	
 	{"expirationDate": "2016-01-01", "notifyUsers": [], "label": "TestItem"}
+	
+	> curl http://localhost:5000/inventory
+	
+	[{"expirationDate": "2016-01-01", "notifyUsers": [], "label": "TestItem"}]
+	
+	> curl http://localhost:5000/inventory/TestItem?action=addNotify -X PUT -d "user=testuser"
+	
+	{"expirationDate": "2016-01-01", "notifyUsers": ["test"], "label": "TestItem"}
+	
+	> curl http://localhost:5000/notifications/test
+
+	[]
+	
+	> curl http://localhost:5000/inventory/TestItem -X DELETE
+	
+	> curl http://localhost:5000/notifications/test
+	
+	[{"message": "TestItem was removed", "user": "test"}]
