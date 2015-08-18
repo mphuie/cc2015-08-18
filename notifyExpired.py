@@ -1,9 +1,9 @@
-import urllib2
+import requests
 import json
 import datetime
 
-response = urllib2.urlopen('http://localhost:5000/inventory').read()
-inventory = json.loads(response)
+r = requests.get('http://localhost:5000/inventory')
+inventory = r.json()
 
 now = datetime.datetime.today()
 for item in inventory:
@@ -13,3 +13,7 @@ for item in inventory:
 
   if now > expirationDateObject:
     print "this item is expired!!"
+
+    for user in item["notifyUsers"]:
+      r = requests.post("http://localhost:5000/notifications", data=dict(user=user, message="%s is expired!" % item["label"]))
+      print r.status_code
