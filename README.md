@@ -2,8 +2,10 @@
 
 Usage
 
-  pip install -r requirements.txt
+    pip install -r requirements.txt
+    
+    python app.py
   
-Testing
+Tests
 
-  nosetests
+    nosetests
