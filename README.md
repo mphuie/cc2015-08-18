@@ -1,18 +1,23 @@
 # cc2015-08-18
 
-Usage
+##Usage
 
     pip install -r requirements.txt
     
     python app.py
   
-Tests
+##Tests
 
     nosetests
 
+##notes
 
+- no datastore, using array of hash/dict (no PKs)
+- using DELETE HTTP method for taking an item out from inventory as GET method is generally idempotent
+- notifications is an list of users attached to an inventory item.  there is a PUT method to add/remove users to this array.
+- expiration notification is done through a script which should be run periodically `notifyExpired.py`
 
-#Endpoints
+##Endpoints
 
 	GET /inventory   		                    # list all inventory items
 	POST /inventory 							# add new item
