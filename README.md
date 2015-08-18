@@ -1,6 +1,6 @@
 # cc2015-08-18
 
-Written in Flask (python microframework and Flask-restful)
+Written in Flask (python microframework and Flask-Restful)
 
 ##Usage
 
@@ -12,7 +12,7 @@ Written in Flask (python microframework and Flask-restful)
 
     nosetests
 
-##notes
+##Notes
 
 - No datastore, using in-memory array of hash/dict (no PKs)
 - Ideally should be logging the users who added the item as well as auditing/logging all operations (possibly via session/cookie)
@@ -31,3 +31,10 @@ Written in Flask (python microframework and Flask-restful)
 	
 	GET /notifications                          # list notifications for all users
 	GET /notifications/<user>                   # list notifications for specific users
+
+
+##Sample output
+
+	curl http://localhost:5000/inventory -X POST -d "expirationDate=2016-01-01&label=TestItem"
+	
+	{"expirationDate": "2016-01-01", "notifyUsers": [], "label": "TestItem"}
